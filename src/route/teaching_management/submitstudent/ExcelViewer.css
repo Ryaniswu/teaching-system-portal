@@ -1,0 +1,15 @@
+.ant-table td {
+    white-space: nowrap;
+}
+
+.ant-table-fixed, .ant-table-fixed * {
+    border-color: black !important;
+}
+
+td.column-selected, th.column-selected {
+    background-color: lightcoral !important;
+}
+
+td.column-abscissa, th.column-abscissa {
+    background-color: rgb(242, 245, 88) !important;
+}
