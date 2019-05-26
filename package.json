@@ -3,14 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@webassemblyjs/floating-point-hex-parser": "^1.8.5",
     "antd": "^3.18.2",
+    "array-filter": "^1.0.0",
     "babel-plugin-import": "^1.11.2",
+    "buffer-from": "^1.1.1",
     "customize-cra": "^0.2.12",
+    "map-visit": "^1.0.0",
+    "on-finished": "^2.3.0",
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.3",
     "react-dom": "^16.8.6",
+    "react-infinite-scroller": "^1.2.4",
+    "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.1",
+    "reqwest": "^2.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",

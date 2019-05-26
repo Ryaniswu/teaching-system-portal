@@ -1,14 +1,14 @@
 import React from 'react';
-import {connect} from "react-redux";
+// import {connect} from "react-redux";
 
 import {Layout, Table, Select, Button, message} from 'antd';
-import {ExcelViewer} from "./ExcelViewer";
-import fetch from '../../../util/fetch'
+// import {ExcelViewer} from "../ExcelViewer"
+// import fetch from '../../util/fetch'
 
 const {Content} = Layout;
 const Option = Select.Option;
 
-class Data extends React.Component {
+class SelectSubject extends React.Component {
   constructor() {
     super();
     this.expId = '';
@@ -44,7 +44,7 @@ class Data extends React.Component {
         });
       })
     } else {
-      message.warning('请输入科目/日期/学号!');
+      message.warning('请输入课程!');
     }
   }
 
@@ -52,26 +52,15 @@ class Data extends React.Component {
     return (
       <div>
         <Select
-          placeholder="选择选课表"
+          placeholder="选择课程"
           style={{width: 600}}
           onChange={this.handleSelect}
         >
           {this.state.optionData}
         </Select>
-        <Button
-          type="primary"
-          style={{float: 'right', marginRight: "24px"}}
-          onClick={this.handleClick}
-        >
-          查询
-        </Button>
-        <br/><br/>
-        <ExcelViewer {...this.state.expData} />
-      </div>
+        </div>
     )
   }
 }
 
-export default connect(state => {
-  return {data: state.analysis}
-})(Data);
+export default SelectSubject;

@@ -4,7 +4,7 @@ import './App.css';
 import {BrowserRouter as Router} from "react-router-dom";
 import {Icon, Layout, Row, Col,Button} from 'antd';
 import {ContentRouter, Navigation} from "./Router.js";
-// import BreadCrumbBar from "./layoutComponent/BreadCrumb";
+import BreadCrumbBar from "./layoutComponent/BreadCrumb";
 // import HomePage from './homePage.jpg';
 // import Ten from './route/map/chinese-flavor/essential-feature/spectrum.png';
 
@@ -74,7 +74,7 @@ class PageLayout extends React.Component {
                 </Row>
               </Header>
               <Layout style={{paddingLeft: '24px', display: "inline-block", width: '100%'}}>
-                {/* <BreadCrumbBar/> */}
+                <BreadCrumbBar/>
                 <ContentRouter/>
               </Layout>
               {/*<Footer style={{textAlign: 'center'}}>*/}

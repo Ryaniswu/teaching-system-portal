@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.ant-tabs-nav-scroll {
+  margin: 0 40%;
+}
+
+.tabs-content, .tab-essential {
+  height: 100%;
+  width: 100%;
+}
+
+.map-chart {
+  height: 100%;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top
+}
+
+.charts-react {
+  height: 100%;
+  width: 50%;
+  display: inline-block;
+}

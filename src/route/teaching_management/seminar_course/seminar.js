@@ -1,8 +1,14 @@
-import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
+import { Table, Input, InputNumber, Popconfirm, Form,Col,Button } from 'antd';
 import React from 'react';
-import {mydata} from './data';
+// import {mydata} from './data';
 
-let data = mydata;
+let data = [{
+  'key':'1',
+  '课程名':'数据结构',
+  '课程号':'08062435',
+  '上课学期':'2019年夏季学期',
+  '是否为研讨课':'否'
+}];
 
 const EditableContext = React.createContext();
 
@@ -57,43 +63,40 @@ class EditableTable extends React.Component {
     this.state = { data, editingKey: '' };
     this.columns = [
       {
-        title: '学号',
-        dataIndex: '学号',
-        width: '40%',
+        title: '课程名',
+        dataIndex: '课程名',
+        width: '15%',
         editable: true,
       },
       {
-        title: '姓名',
-        dataIndex: '姓名',
-        width: '20%',
+        title: '课程号',
+        dataIndex: '课程号',
+        width: '15%',
         editable: true,
       },
       {
-        title: '上机验收',
-        dataIndex: '上机验收',
-        width: '10%',
+        title: '上课学期',
+        dataIndex: '上课学期',
+        width: '15%',
         editable: true,
       },
       {
-        title: '研讨讲解',
-        dataIndex: '研讨讲解',
-        width: '10%',
-        editable: true,
-      },
-      {
-        title: '作业提交',
-        dataIndex: '作业提交',
+        title: '是否为研讨课',
+        dataIndex: '课是否为研讨课',
         width: '10%',
         editable: true,
       },
       {
         title: '操作',
         dataIndex: '操作',
+        width: '10%',
         render: (text, record) => {
           const { editingKey } = this.state;
           const editable = this.isEditing(record);
           return editable ? (
+            
             <span>
+            
               <EditableContext.Consumer>
                 {form => (
                   <a
@@ -101,7 +104,7 @@ class EditableTable extends React.Component {
                     onClick={() => this.save(form, record.key)}
                     style={{ marginRight: 8 }}
                   >
-                    保存
+                    设为研讨课
                   </a>
                 )}
               </EditableContext.Consumer>
@@ -166,7 +169,7 @@ class EditableTable extends React.Component {
         ...col,
         onCell: record => ({
           record,
-          inputType: (col.dataIndex === '上机验收'||col.dataIndex === '研讨讲解'||col.dataIndex === '作业提交') ? 'number' : 'text',
+          inputType:'text',
           dataIndex: col.dataIndex,
           title: col.title,
           editing: this.isEditing(record),
@@ -191,6 +194,6 @@ class EditableTable extends React.Component {
   }
 }
 
-const EditableFormTable = Form.create()(EditableTable);
+const Seminar = Form.create()(EditableTable);
 
-export {EditableFormTable};
+export {Seminar};

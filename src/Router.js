@@ -1,8 +1,17 @@
 import React from 'react';
 import { Link, Route, Switch, withRouter, Redirect } from "react-router-dom";
 //-------------------Router-------------------------------
-import {EditableFormTable} from "./route/teaching_management/score_management/index";
-import ExperimentUpload from "./route/teaching_management/submitstudent/uploaddata";
+// import {EditableFormTable} from "./route/teaching_management/score_management/index";
+import ScoreManagement from "./route/teaching_management/score_management/scoreandsum";
+import UploadContent from "./route/teaching_management/submitstudent/uploadContent";
+import Home from './route/teaching_management/score_management/home';
+import SetSeminar from "./route/teaching_management/seminar_course/index";
+import AnalysisData from './route/undergraduate_graduation/analysisdata/uploadContent';
+import ReceiveData from './route/undergraduate_graduation/receive_data/index1';
+import Editable from './route/undergraduate_graduation/analysis_view/index';
+import AnswerQuestion from './route/undergraduate_graduation/answer_question/index';
+import BasicCommunication from "./route/teaching_management/basic_communication/index";
+import ScientificProject from "./route/scientific_management/scientific_project/index";
 //-------------------Router End---------------------------
 import { Menu, Icon } from "antd";
 
@@ -12,62 +21,70 @@ const nav = [{
   key: 'home',
   path: '/',
   name: '首页',
-  component: <div>hhh</div>,
+  component: Home,
   icon: 'home'
 }, {
   key: 'teachingManagement',
   path: '/teachingManagement',
   name: '教学管理',
-  // component: ExperimentHome,
+  component: Home,
   icon: 'file',
   children: [{
-    key: 'submit',
-    path: '/submit',
+    key: 'submitstudent',
+    path: '/submitstudent',
     name: '提交选课学生',
-    component: ExperimentUpload
+    component: UploadContent
   },{//这里的path是以父的path为前缀的path
     key: 'score',
     path: '/score',
     name: '成绩管理',
-    component: EditableFormTable
+    component:ScoreManagement
   }, {
     key: 'notice',
     path: '/notice',
-    name: '通知',
-    // component: ExperimentData
+    name: '基本交流',
+    component: BasicCommunication
   },
   {
     key: 'discuss',
     path: '/discuss',
-    name: '研讨',
-    // component: ExperimentData
+    name: '研讨课',
+    component: SetSeminar
   },
   ]
 },
-  {
-    key: 'analysis',
-    path: '/analysis',
-    name: '本科毕设',
-    // component: AnalysisHome,
-    icon: 'pie-chart',
-    children: [{
-      key: 'analysis_data',
-      path: '/create',
-      name: '发布资料',
-      // component: AnalysisCreate
-    }, {
-      key: 'analysis_view',
-      path: '/view',
-      name: '发布通知',
-      // component: AnalysisView
-    },
-    {
-      key: 'analysis_view',
-      path: '/view',
-      name: '成绩管理',
-      // component: AnalysisView
-    }]
+{
+  key: 'analysis',
+  path: '/analysis',
+  name: '本科毕设',
+  // component: AnalysisHome,
+  icon: 'pie-chart',
+  children: [{
+    key: 'analysis_data',
+    path: '/create',
+    name: '发布资料',
+    component: AnalysisData
   }, {
+    key: 'receive_data',
+    path: '/view',
+    name: '接收资料',
+    component: ReceiveData
+  },
+  {
+    key: 'analysis_view',
+    path: '/manage',
+    name: '成绩管理',
+    component: Editable
+  },
+  {
+     key: 'answer_question',
+     path: '/question',
+     name: '回答问题',
+     component: AnswerQuestion
+  }
+
+  ]
+},, {
     key: 'map',
     path: '/map',
     name: '研究生管理',
@@ -109,7 +126,7 @@ const nav = [{
         key: 'map_favor',
         path: '/flavor',
         name: '执行项目',
-        // component: FlavorMap,
+        component: ScientificProject,
       },{
         key: 'rec',
         path: '/rec',
@@ -134,116 +151,7 @@ const nav = [{
         name: '象棋',
         // component: PopPrefer,
       },
-    ]
-  // },{
-  //   key: 'jiaoma',
-  //   path: '/jiaoma',
-  //   name: '椒麻风味地图',
-  //   // component: CaiXi,
-  //   icon: 'deployment-unit',
-  //   children:[
-  //     {
-  //       key: 'maweiwuzhi',
-  //       path: '/maweiwuzhi',
-  //       name: '麻味物质',
-  //     },{
-  //       key: 'maxiangwuzhi',
-  //       path: '/maxiangwuzhi',
-  //       name: '麻香物质',
-  //       component: HotSpot,
-  //     },{
-  //       key: 'maweiganjue',
-  //       path: '/maweifanjue',
-  //       name: '麻味感觉',
-  //     },{
-  //       key: 'maxiangfanjue',
-  //       path: '/maxingfanjue',
-  //       name: '麻香感觉',
-  //     },{
-  //       key: 'dianziganguan',
-  //       path: '/dianziganguan',
-  //       name: '电子感官'
-  //     }
-  //   ]
-  // }, {
-  //   key: 'map_caixi',
-  //   path: '/caixi',
-  //   name: '中式菜肴地图',
-  //   // component: CaiXi,
-  //   icon: 'trophy',
-  //   children:[
-  //     {
-  //       key: 'wuzhitezheng',
-  //       path: '/wuzhitezhegn',
-  //       name: '物质特征',
-  //     },{
-  //       key: 'ganguantezheng',
-  //       path: '/感官特征',
-  //       name: '感官特征',
-  //     },{
-  //       key: 'caixi',
-  //       path: '/caixi',
-  //       name: '感官特征',
-  //       component: CaiXi,
-  //     }
-  //   ]
-  // },{
-  //   key: 'map_preference',
-  //   path: '/preference',
-  //   name: '风味与心理',
-  //   icon: 'apple',
-  //   // component: PopPrefer
-  //   children: [
-  //     {
-  //       key: 'shenghuomanyidu',
-  //       path: '/shengguomanyidu',
-  //       name: '生活满意度',
-  //       component: LifeSatisfaction,
-  //     },{
-  //       key: 'qingxuzhuangtai',
-  //       path: '/qingxuzhuangtai',
-  //       name: '情绪状态'
-  //     },{
-  //       key: 'ganjuexunqiu',
-  //       path: '/ganjuexunqiu',
-  //       name: '感觉寻求'
-  //     },{
-  //       key:'shipinkongxin',
-  //       path: '/shipinkongxin',
-  //       name: '食品恐新',
-  //     },{
-  //       key:'jiangchengmingan',
-  //       path: '/jingchengmingan',
-  //       name: '奖惩敏感',
-  //     },{
-  //       key:'kouqiangshengli',
-  //       path: '/kouqingshegnli',
-  //       name: '口腔生理',
-  //     }
-  //   ]
-  // 
-// }, 
-//   {
-//     key: 'other',
-//     path: '/other',
-//     name: '其它',
-//     icon: 'slack',
-//     children: [
-
-//       {
-//         key: 'map_statis',
-//         path: '/statis',
-//         name: '数据统计',
-//         // component: DataSum
-//       },
-//       {
-//         key: 'map_flavor',
-//         path: '/flavor',
-//         name: '口味直方图',
-//         component: FlavorHistogram
-//       },
-//     ]
-//   
+    ]  
 },
 ];
 

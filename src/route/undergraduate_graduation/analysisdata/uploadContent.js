@@ -1,9 +1,11 @@
 import React from 'react';
-import {connect} from "react-redux";
-import fetch from '../../../util/fetch'
-import {ExcelViewer} from "./ExcelViewer";
+// import {connect} from "react-redux";
+import fetch from '../../../util/fetch';
+// import {ExcelViewer} from "../../../../../../../food-master/src/route/ExcelViewer";
 
-import {Layout, Upload, Icon, Button, message, Table, Row, Col, Modal} from 'antd';
+import {Layout, Upload, Icon, Button, message, Tag, Row, Col, Modal,Input} from 'antd';
+
+const { CheckableTag } = Tag;
 
 const {Content} = Layout;
 
@@ -16,7 +18,19 @@ class UploadContent extends React.Component {
     )
   }
 }
+class MyTag extends React.Component {
+  state = { checked: true };
 
+  handleChange = checked => {
+    this.setState({ checked });
+  };
+
+  render() {
+    return (
+      <CheckableTag {...this.props} checked={this.state.checked} onChange={this.handleChange} />
+    );
+  }
+}
 class MyUpload extends React.Component {
   constructor() {
     super();
@@ -64,7 +78,6 @@ class MyUpload extends React.Component {
       action: '/exp/excelRead',
       headers: {
         authorization: 'authorization-text',
-
       },
       onChange: (info) => {
         if (info.file.status !== 'uploading') {
@@ -94,10 +107,13 @@ class MyUpload extends React.Component {
         <Row>
           <Col span={3}><Upload {...uploadConfig}>
             <Button>
-              <Icon type='upload'/>上传学生选课数据
+              <Icon type='upload'/>上传资料
             </Button>
           </Upload></Col>
-          <Col span={12}><Button type="primary" onClick={this.handleClick}>确认上传</Button></Col>
+          {/*<Col span={3}><MyTag>请输入课程：</MyTag></Col>*/}
+          <Col span={2}><Button type="primary" onClick={this.handleClick}>请输入课程：</Button></Col>
+          <Col span={5}><Input placeholder="课程名称" /></Col>
+          <Col span={5}><Button type="primary" onClick={this.handleClick}>确认上传</Button></Col>
         </Row>
         <Modal
           title="提示"
@@ -106,13 +122,11 @@ class MyUpload extends React.Component {
         >
           <p>{this.content}</p>
         </Modal>
-        <h3>预览数据:</h3>
+        <h3>预览资料内容:</h3>
         {/* <ExcelViewer {...this.state.datas} /> */}
       </div>
     )
   }
 }
 
-export default connect(state => {
-  return {data: state.analysis}
-})(UploadContent);
+export default UploadContent;
